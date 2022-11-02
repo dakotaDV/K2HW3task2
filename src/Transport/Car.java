@@ -1,16 +1,16 @@
 package Transport;
 
 public class Car {
-   private final String brand;
-   private final String model;
+    private final String brand; //подчеркивает
+    private final String model; //подчеркивает
     private double engineVolume;
     private String color;
-   private final Integer productionYear;
-    private final String productionCountry;
-   private String transmission;
-    private final String bodyType;
-    private  String registrationNumber;
-   private final int numberOfSeats;
+    private final Integer productionYear; //подчеркивает
+    private final String productionCountry; //подчеркивает
+    private String transmission;
+    private final String bodyType; //подчеркивает
+    private String registrationNumber;
+    private final int numberOfSeats; //подчеркивает
     private boolean summerTires;
 
     @Override
@@ -70,9 +70,9 @@ public class Car {
     }
 
     public void setTransmission(String transmission) {
-        if(transmission == null){
+        if (transmission == null) {
             this.transmission = "МКПП";
-        }else{
+        } else {
             this.transmission = transmission;
         }
     }
@@ -82,9 +82,9 @@ public class Car {
     }
 
     public void setRegistrationNumber(String registrationNumber) {
-        if(registrationNumber == null){
+        if (registrationNumber == null) {
             this.registrationNumber = "х000хх000";
-        }else{
+        } else {
             this.registrationNumber = registrationNumber;
         }
     }
@@ -94,84 +94,81 @@ public class Car {
     }
 
     public void setSummerTires(boolean summerTires) {
-            this.summerTires = summerTires;
-        }
-
-
+        this.summerTires = summerTires;
+    }
 
 
     public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry, String transmission, String bodyType, String registrationNumber, int numberOfSeats, boolean summerTires) {
-        if(brand==null){
-            this.brand="default ";
-        }else{
+        if (brand == null) {
+            this.brand = "default ";
+        } else {
             this.brand = brand;
         }
-        if(model==null){
-            this.model="default ";
-        }else{
+        if (model == null) {
+            this.model = "default ";
+        } else {
             this.model = model;
         }
-        if(productionCountry==null){
-            this.productionCountry="default ";
-        }else{
+        if (productionCountry == null) {
+            this.productionCountry = "default ";
+        } else {
             this.productionCountry = productionCountry;
         }
-        if(Double.compare(engineVolume, 0)==0) {
+        if (Double.compare(engineVolume, 0) == 0) {
             this.engineVolume = 1.5;
-        }else{
+        } else {
             this.engineVolume = engineVolume;
         }
 
-        if(color==null){
-            this.color="белый ";
-        }else{
+        if (color == null) {
+            this.color = "белый ";
+        } else {
             this.color = color;
         }
-        if(productionYear >=0) {
+        if (productionYear >= 0) {
             this.productionYear = 2000;
-        }else{
+        } else {
             this.productionYear = productionYear;
         }
 
-        if(transmission == null){
+        if (transmission == null) {
             this.transmission = "МКПП";
-        }else{
+        } else {
             this.transmission = transmission;
         }
-        if(bodyType == null){
+        if (bodyType == null) {
             this.bodyType = "седан";
-        }else{
+        } else {
             this.bodyType = bodyType;
         }
-        if(registrationNumber == null){
+        if (registrationNumber == null) {
             this.registrationNumber = "х000хх000";
-        }else{
+        } else {
             this.registrationNumber = registrationNumber;
         }
-        if(numberOfSeats == 0){
+        if (numberOfSeats == 0) {
             this.numberOfSeats = 5;
-        }else{
+        } else {
             this.numberOfSeats = numberOfSeats;
         }
-        if(summerTires == true){
+        if (summerTires == true) {
             this.summerTires = true;
-        }else{
+        } else {
             this.summerTires = summerTires;
         }
-    public void changeTyres(){
-            summerTires = ! summerTires;
+        public void changeTyres () { //подчеркивает
+            summerTires = !summerTires;
         }
-    char[] chars = registrationNumber.toCharArray();
-       if(!Character.isAlphabetic(chars[0]) || !Character.isAlphabetic(chars[4]) || !Character.isAlphabetic(chars[5])){
-           return false;
-       }
-        if(!Character.isDigit(chars[1]) || !Character.isDigit(chars[2]) || !Character.isDigit(chars[3]) || !Character.isDigit(chars[6]) || !Character.isDigit(chars[7]) || !Character.isDigit(chars[8])){
-            return false;
+        char[] chars = registrationNumber.toCharArray();
+        if (!Character.isAlphabetic(chars[0]) || !Character.isAlphabetic(chars[4]) || !Character.isAlphabetic(chars[5])) {
+            return false;  //подчеркивает
         }
-        System.out.println(brand + " " + model + ", " + productionYear + " год выпуска, " + "сборка  " + productionCountry + ", " + color + " цвета, " + "объем двигателя" + " коробка передач" + transmission + " тип кузова " + bodyType + " регистрационный номер " +  registrationNumber + " количество мест " + numberOfSeats + " резина" + summerTires);
+        if (!Character.isDigit(chars[1]) || !Character.isDigit(chars[2]) || !Character.isDigit(chars[3]) || !Character.isDigit(chars[6]) || !Character.isDigit(chars[7]) || !Character.isDigit(chars[8])) {
+            return false; //подчеркивает
+        }
+        System.out.println(brand + " " + model + ", " + productionYear + " год выпуска, " + "сборка  " + productionCountry + ", " + color + " цвета, " + "объем двигателя" + " коробка передач" + transmission + " тип кузова " + bodyType + " регистрационный номер " + registrationNumber + " количество мест " + numberOfSeats + " резина" + summerTires);
 
 
-
-}
+    }
 }
 
