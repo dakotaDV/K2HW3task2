@@ -1,17 +1,23 @@
 package Transport;
 
+import java.security.Key;
+import java.sql.SQLOutput;
+import java.time.LocalDate;
+
 public class Car {
-    private final String brand; //подчеркивает
-    private final String model; //подчеркивает
+    private String brand;
+    private String model;
     private double engineVolume;
     private String color;
-    private final Integer productionYear; //подчеркивает
-    private final String productionCountry; //подчеркивает
+    private Integer productionYear;
+    private String productionCountry;
     private String transmission;
-    private final String bodyType; //подчеркивает
+    private String bodyType;
     private String registrationNumber;
-    private final int numberOfSeats; //подчеркивает
+    private int numberOfSeats;
     private boolean summerTires;
+    private Key key;
+    private Insurance insurance;
 
     @Override
     public String toString() {
@@ -98,6 +104,22 @@ public class Car {
     }
 
 
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+
     public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry, String transmission, String bodyType, String registrationNumber, int numberOfSeats, boolean summerTires) {
         if (brand == null) {
             this.brand = "default ";
@@ -156,19 +178,101 @@ public class Car {
         } else {
             this.summerTires = summerTires;
         }
-        public void changeTyres () { //подчеркивает
-            summerTires = !summerTires;
+        if (key == null) {
+            this.key = new Key();
+        } else {
+            this.key = key;
         }
+
+        if (insurance == null) {
+            this.insurance = new Insurance();
+        } else {
+            this.insurance =insurance;
+        }
+
+        //public void changeTyres () { //подчеркивает
+          //  summerTires = !summerTires;
+      //  }
+
         char[] chars = registrationNumber.toCharArray();
         if (!Character.isAlphabetic(chars[0]) || !Character.isAlphabetic(chars[4]) || !Character.isAlphabetic(chars[5])) {
-            return false;  //подчеркивает
+            return;
         }
         if (!Character.isDigit(chars[1]) || !Character.isDigit(chars[2]) || !Character.isDigit(chars[3]) || !Character.isDigit(chars[6]) || !Character.isDigit(chars[7]) || !Character.isDigit(chars[8])) {
-            return false; //подчеркивает
+            return;
         }
+
         System.out.println(brand + " " + model + ", " + productionYear + " год выпуска, " + "сборка  " + productionCountry + ", " + color + " цвета, " + "объем двигателя" + " коробка передач" + transmission + " тип кузова " + bodyType + " регистрационный номер " + registrationNumber + " количество мест " + numberOfSeats + " резина" + summerTires);
 
+    }
 
+    public static class Key {
+
+        private final boolean remoteRunEngine;
+        private final boolean withoutKeyAccess;
+
+        public Key(boolean remoteRunEngine, boolean withoutKeyAccess) {
+            this.remoteRunEngine = remoteRunEngine;
+            this.withoutKeyAccess = withoutKeyAccess;
+        }
+
+        public Key() {
+            this(false, false);
+        }
+
+        public boolean isRemoteRunEngine() {
+            return remoteRunEngine;
+        }
+
+        public boolean isWithoutKeyAccess() {
+            return withoutKeyAccess;
+        }
+    }
+
+    public static class Insurance {
+
+        private final LocalDate expireDate;
+        private final double cost;
+        private final String number;
+
+        public Insurance(LocalDate expireDate, double cost, String number) {
+            if (expireDate == null) {
+                this.expireDate = LocalDate.now().plusDays(365);
+            } else {
+                this.expireDate = expireDate;
+            }
+            this.cost = cost;
+            if (number == null) {
+                this.number = "123456789";
+            } else {
+                this.number = number;
+            }
+        }
+public Insurance(){
+            this(null, 10000, null);
+}
+        public LocalDate getExpireDate() {
+            return expireDate;
+        }
+
+        public double getCost() {
+            return cost;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+        public void checkExpireDate(){
+            if(expireDate.isBefore(LocalDate.now()) || expireDate.isEqual(LocalDate.now()) ){
+                System.out.println("Нужно срочно оформлять новую страховку");
+            }
+        }
+public void checkNumber(){
+    if(number.length() != 9){
+
+        System.out.println("Номер страховки некорректный");
+    }
+}
     }
 }
 
